@@ -28,9 +28,9 @@
         },
         "Services": [{
           "Id": "",
-          "Name": "chronograf-client",
+          "Name": "chronograf",
           "Tags": [
-            "luca"
+            "dependency"
           ],
           "PortLabel": "db",
           "Checks": [{
