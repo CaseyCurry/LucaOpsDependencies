@@ -30,7 +30,7 @@
       "tabs": [],
       "resources": [],
       "artifacts": [{
-        "source": "chronograf/container",
+        "source": "container",
         "destination": null,
         "type": "build"
       }],
@@ -46,7 +46,7 @@
           "-LO",
           "https://dl.influxdata.com/chronograf/releases/chronograf-1.3.8.1-static_linux_amd64.tar.gz"
         ],
-        "working_directory": "./chronograf"
+        "working_directory": null
       }, {
         "type": "exec",
         "run_if": "passed",
@@ -56,7 +56,7 @@
           "xvfz",
           "chronograf-1.3.8.1-static_linux_amd64.tar.gz"
         ],
-        "working_directory": "./chronograf"
+        "working_directory": null
       }, {
         "type": "exec",
         "run_if": "passed",
@@ -65,7 +65,7 @@
         "arguments": [
           "begin"
         ],
-        "working_directory": "./chronograf"
+        "working_directory": null
       }, {
         "type": "exec",
         "run_if": "passed",
@@ -75,7 +75,7 @@
           "set-name",
           "chronograf"
         ],
-        "working_directory": "./chronograf"
+        "working_directory": null
       }, {
         "type": "exec",
         "run_if": "passed",
@@ -87,7 +87,7 @@
           "version",
           "1.3.8.1"
         ],
-        "working_directory": "./chronograf"
+        "working_directory": null
       }, {
         "type": "exec",
         "run_if": "passed",
@@ -98,7 +98,7 @@
           "./chronograf-1.3.8.1-1/chronograf",
           "/chronograf"
         ],
-        "working_directory": "./chronograf"
+        "working_directory": null
       }, {
         "type": "exec",
         "run_if": "passed",
@@ -108,7 +108,7 @@
           "set-exec",
           "/chronograf"
         ],
-        "working_directory": "./chronograf"
+        "working_directory": null
       }, {
         "type": "exec",
         "run_if": "passed",
@@ -121,7 +121,7 @@
           "tcp",
           "8888"
         ],
-        "working_directory": "./chronograf"
+        "working_directory": null
       }, {
         "type": "exec",
         "run_if": "passed",
@@ -130,7 +130,7 @@
         "arguments": [
           "./container"
         ],
-        "working_directory": "./chronograf"
+        "working_directory": null
       }, {
         "type": "exec",
         "run_if": "passed",
@@ -140,7 +140,7 @@
           "write",
           "./container/chronograf.1.3.8.1.aci"
         ],
-        "working_directory": "./chronograf"
+        "working_directory": null
       }, {
         "type": "exec",
         "run_if": "passed",
@@ -149,7 +149,7 @@
         "arguments": [
           "end"
         ],
-        "working_directory": "./chronograf"
+        "working_directory": null
       }]
     }]
   }, {
@@ -177,7 +177,7 @@
         "stage": "Containerize",
         "job": "Containerize",
         "is_source_a_file": false,
-        "source": "./chronograf/container",
+        "source": "./container",
         "destination": null
       }, {
         "type": "exec",
@@ -198,7 +198,7 @@
           "-c",
           "scp -o StrictHostKeyChecking=no -i /var/go/.ssh/id_rsa ./container/chronograf.1.3.8.1.aci cj@server.nomad.devlab:/www/containers"
         ],
-        "working_directory": "./chronograf"
+        "working_directory": null
       }, {
         "type": "exec",
         "run_if": "passed",
