@@ -105,6 +105,18 @@
         "on_cancel": null,
         "command": "acbuild",
         "arguments": [
+          "environment",
+          "add",
+          "BASE_PATH",
+          "/chronograf"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "acbuild",
+        "arguments": [
           "set-exec",
           "/chronograf"
         ],
