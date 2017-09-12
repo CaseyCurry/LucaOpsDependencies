@@ -107,7 +107,8 @@
         "arguments": [
           "set-exec",
           "--",
-          "/chronograf --basepath=/chronograf"
+          "/chronograf",
+          "--basepath=/chronograf"
         ],
         "working_directory": null
       }, {
