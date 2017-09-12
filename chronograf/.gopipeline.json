@@ -30,8 +30,8 @@
       "tabs": [],
       "resources": [],
       "artifacts": [{
-        "source": "container",
-        "destination": null,
+        "source": "chronograf/container",
+        "destination": "container",
         "type": "build"
       }],
       "properties": [],
