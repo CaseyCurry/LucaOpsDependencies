@@ -103,12 +103,10 @@
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
-        "command": "acbuild",
+        "command": "bash",
         "arguments": [
-          "set-exec",
-          "--",
-          "/chronograf",
-          "--basepath=/chronograf"
+          "-c",
+          "acbuild set-exec -- /chronograf --basepath=/chronograf"
         ],
         "working_directory": null
       }, {
