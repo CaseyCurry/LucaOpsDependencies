@@ -23,7 +23,7 @@
             "image"
           ],
           "port_map": [{
-            "db": "db"
+            "app": "http"
           }]
         },
         "Services": [{
@@ -32,7 +32,7 @@
           "Tags": [
             "dependency"
           ],
-          "PortLabel": "db",
+          "PortLabel": "app",
           "Checks": [{
             "Name": "Chronograf Healthy",
             "Type": "http",
@@ -47,7 +47,7 @@
           "Networks": [{
             "MBits": 10,
             "DynamicPorts": [{
-              "Label": "db"
+              "Label": "app"
             }]
           }]
         },
