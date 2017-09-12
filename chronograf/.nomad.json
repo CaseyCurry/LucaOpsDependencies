@@ -1,0 +1,70 @@
+{
+  "Job": {
+    "ID": "chronograf",
+    "Name": "chronograf",
+    "Type": "service",
+    "Datacenters": [
+      "dev-lab"
+    ],
+    "Constraints": [{
+      "LTarget": "${meta.rkt}",
+      "RTarget": "1",
+      "Operand": "="
+    }],
+    "TaskGroups": [{
+      "Name": "service",
+      "Count": 1,
+      "Tasks": [{
+        "Name": "api",
+        "Driver": "rkt",
+        "Config": {
+          "image": "http://server.nomad.devlab/chronograf.1.3.8.1.aci",
+          "insecure_options": [
+            "image"
+          ],
+          "port_map": [{
+            "db": "db"
+          }]
+        },
+        "Services": [{
+          "Id": "",
+          "Name": "chronograf-client",
+          "Tags": [
+            "luca"
+          ],
+          "PortLabel": "db",
+          "Checks": [{
+            "Name": "Chronograf Healthy",
+            "Type": "http",
+            "Path": "/",
+            "Interval": 10000000000,
+            "Timeout": 2000000000
+          }]
+        }],
+        "Resources": {
+          "CPU": 150,
+          "MemoryMB": 64,
+          "Networks": [{
+            "MBits": 10,
+            "DynamicPorts": [{
+              "Label": "db"
+            }]
+          }]
+        },
+        "LogConfig": {
+          "MaxFiles": 5,
+          "MaxFileSizeMB": 10
+        }
+      }],
+      "RestartPolicy": {
+        "Interval": 300000000000,
+        "Attempts": 10,
+        "Delay": 25000000000,
+        "Mode": "delay"
+      },
+      "EphemeralDisk": {
+        "SizeMB": 100
+      }
+    }]
+  }
+}
