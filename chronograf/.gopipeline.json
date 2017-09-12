@@ -106,7 +106,7 @@
         "command": "bash",
         "arguments": [
           "-c",
-          "set-exec -- /chronograf --basepath=/chronograf"
+          "acbuild set-exec -- /chronograf --basepath=/chronograf"
         ],
         "working_directory": null
       }, {
