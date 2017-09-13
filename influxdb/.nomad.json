@@ -16,8 +16,7 @@
       "Count": 1,
       "Tasks": [{
         "Name": "create directory",
-        "User": "root",
-        "Driver": "exec",
+        "Driver": "raw_exec",
         "Config": {
           "command": "/usr/bin/mkdir",
           "args": [{
