@@ -21,3 +21,7 @@ scp ./influxdb.1.3.5.aci @server.nomad.devlab:/www/containers
 # cleanup
 rm ./influx.1.3.5.aci
 rm -rf ./influxdb-1.3.5-1
+
+# test
+curl -XPOST 'http://server.consul.devlab/influxdb/query' --data-urlencode "q=CREATE DATABASE mydb"
+curl -XPOST 'http://server.consul.devlab/influxdb/write?db=mydb' -d 'cpu,host=server01,region=uswest load=42 1434055562000000000'

@@ -103,14 +103,10 @@
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
-        "command": "acbuild",
+        "command": "bash",
         "arguments": [
-          "set-exec",
-          "--",
-          "/influxdb/influxd",
-          "run",
-          "-config",
-          "/influxdb/influxdb.conf"
+          "-c",
+          "acbuild set-exec -- /influxdb/influxd run -config /influxdb/influxdb.conf"
         ],
         "working_directory": null
       }, {
