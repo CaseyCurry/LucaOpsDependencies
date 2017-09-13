@@ -96,19 +96,7 @@
         "arguments": [
           "copy",
           "./influxdb-1.3.5-1",
-          "/influxdb"
-        ],
-        "working_directory": null
-      }, {
-        "type": "exec",
-        "run_if": "passed",
-        "on_cancel": null,
-        "command": "acbuild",
-        "arguments": [
-          "environment",
-          "add",
-          "INFLUXDB_CONFIG_PATH",
-          "/influxdb/influxdb.conf"
+          "/etc/influxdb"
         ],
         "working_directory": null
       }, {
@@ -118,8 +106,7 @@
         "command": "acbuild",
         "arguments": [
           "set-exec",
-          "--",
-          "/influxdb/influxd"
+          "/etc/influxdb/influxd"
         ],
         "working_directory": null
       }, {
