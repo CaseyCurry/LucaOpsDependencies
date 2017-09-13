@@ -19,7 +19,10 @@
         "Driver": "raw_exec",
         "Config": {
           "command": "/usr/bin/mkdir",
-          "args": ["-p", "/var/lib/influxdb"]
+          "args": [
+            "-p",
+            "/var/lib/influxdb"
+          ]
         },
         "Resources": {
           "CPU": 20
@@ -49,7 +52,7 @@
           "Checks": [{
             "Name": "InfluxDB Healthy",
             "Type": "http",
-            "Path": "/",
+            "Path": "/ping",
             "Interval": 10000000000,
             "Timeout": 2000000000
           }]
