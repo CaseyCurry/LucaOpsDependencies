@@ -17,7 +17,10 @@
       "Tasks": [{
         "Driver": "exec",
         "Config": {
-          "Command": "/usr/bin/mkdir -p /var/lib/influxdb"
+          "Command": "/usr/bin/mkdir",
+          "Args": [{
+            "-p": "/var/lib/influxdb"
+          }]
         }
       }, {
         "Name": "api",
