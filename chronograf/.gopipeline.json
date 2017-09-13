@@ -80,12 +80,10 @@
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
-        "command": "acbuild",
+        "command": "bash",
         "arguments": [
-          "label",
-          "add",
-          "version",
-          "1.3.8.1"
+          "-c",
+          "acbuild label add version $GO_REVISION"
         ],
         "working_directory": null
       }, {
@@ -128,19 +126,10 @@
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
-        "command": "mkdir",
+        "command": "bash",
         "arguments": [
-          "./container"
-        ],
-        "working_directory": null
-      }, {
-        "type": "exec",
-        "run_if": "passed",
-        "on_cancel": null,
-        "command": "acbuild",
-        "arguments": [
-          "write",
-          "./container/chronograf.1.3.8.1.aci"
+          "-c",
+          "mkdir ./container && acbuild write ./container/chronograf.$GO_REVISION.aci"
         ],
         "working_directory": null
       }, {
@@ -188,7 +177,7 @@
         "command": "bash",
         "arguments": [
           "-c",
-          "ssh -o StrictHostKeyChecking=no -i /var/go/.ssh/id_rsa cj@server.nomad.devlab \"cd /www/containers && ls -t | grep -e 'chronograf' | tail -n +2 | xargs -r rm\""
+          "ssh -o StrictHostKeyChecking=no -i /var/go/.ssh/id_rsa cj@server.nomad.devlab \"cd /www/containers && ls -t | grep -e 'chronograf' | tail -n +4 | xargs -r rm\""
         ],
         "working_directory": null
       }, {
@@ -198,9 +187,19 @@
         "command": "bash",
         "arguments": [
           "-c",
-          "scp -o StrictHostKeyChecking=no -i /var/go/.ssh/id_rsa ./container/chronograf.1.3.8.1.aci cj@server.nomad.devlab:/www/containers"
+          "scp -o StrictHostKeyChecking=no -i /var/go/.ssh/id_rsa ./container/chronograf.$GO_REVISION.aci cj@server.nomad.devlab:/www/containers"
         ],
         "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "bash",
+        "arguments": [
+          "-c",
+          "sed -i \"s/{{version}}/$GO_REVISION/\" ./.nomad.json"
+        ],
+        "working_directory": "./chronograf"
       }, {
         "type": "exec",
         "run_if": "passed",
