@@ -15,10 +15,11 @@
       "Name": "service",
       "Count": 1,
       "Tasks": [{
+        "Name": "Make the influxdb directory on host",
         "Driver": "exec",
         "Config": {
-          "Command": "/usr/bin/mkdir",
-          "Args": [{
+          "command": "/usr/bin/mkdir",
+          "args": [{
             "-p": "/var/lib/influxdb"
           }]
         }
