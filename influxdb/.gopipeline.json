@@ -106,7 +106,7 @@
           "environment",
           "add",
           "INFLUXDB_CONFIG_PATH",
-          "/influxdb/influxd"
+          "/influxdb/influxdb.conf"
         ],
         "working_directory": null
       }, {
