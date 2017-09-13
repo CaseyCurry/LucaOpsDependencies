@@ -19,9 +19,7 @@
         "Driver": "raw_exec",
         "Config": {
           "command": "/usr/bin/mkdir",
-          "args": [{
-            "-p": "/var/lib/influxdb"
-          }]
+          "args": ["-p", "/var/lib/influxdb"]
         },
         "Resources": {
           "CPU": 20
