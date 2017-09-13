@@ -15,6 +15,11 @@
       "Name": "service",
       "Count": 1,
       "Tasks": [{
+        "Driver": "exec",
+        "Config": {
+          "Command": "/usr/bin/mkdir -p /var/lib/influxdb"
+        }
+      }, {
         "Name": "api",
         "Driver": "rkt",
         "Config": {
