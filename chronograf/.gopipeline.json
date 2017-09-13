@@ -113,19 +113,6 @@
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
-        "command": "acbuild",
-        "arguments": [
-          "port",
-          "add",
-          "http",
-          "tcp",
-          "8888"
-        ],
-        "working_directory": null
-      }, {
-        "type": "exec",
-        "run_if": "passed",
-        "on_cancel": null,
         "command": "bash",
         "arguments": [
           "-c",
