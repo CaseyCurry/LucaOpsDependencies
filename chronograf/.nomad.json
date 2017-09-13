@@ -22,9 +22,6 @@
           "insecure_options": [
             "image"
           ],
-          "port_map": [{
-            "app": "http"
-          }],
           "net": ["host"]
         },
         "Services": [{
