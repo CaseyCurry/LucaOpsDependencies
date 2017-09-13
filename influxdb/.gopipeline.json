@@ -108,7 +108,9 @@
           "set-exec",
           "--",
           "/influxdb/influxd",
-          "-config /influxdb/influxdb.conf"
+          "run",
+          "-config",
+          "/influxdb/influxdb.conf"
         ],
         "working_directory": null
       }, {
