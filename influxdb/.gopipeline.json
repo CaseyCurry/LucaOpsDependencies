@@ -119,10 +119,7 @@
         "arguments": [
           "set-exec",
           "--",
-          "/influxdb/influxd",
-          "run",
-          "-config",
-          "/influxdb/influxdb.conf"
+          "/influxdb/influxd"
         ],
         "working_directory": null
       }, {
