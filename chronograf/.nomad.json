@@ -45,7 +45,8 @@
           "Networks": [{
             "MBits": 10,
             "ReservedPorts": [{
-              "Label": "8888"
+              "Label": "app",
+              "Value": 8888
             }]
           }]
         },
