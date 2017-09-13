@@ -22,6 +22,9 @@
           "insecure_options": [
             "image"
           ],
+          "port_map": [{
+            "app": "http"
+          }],
           "net": ["host"]
         },
         "Services": [{
@@ -30,6 +33,7 @@
           "Tags": [
             "dependency"
           ],
+          "PortLabel": "app",
           "Checks": [{
             "Name": "Chronograf Healthy",
             "Type": "http",
@@ -42,7 +46,11 @@
           "CPU": 500,
           "MemoryMB": 256,
           "Networks": [{
-            "MBits": 10
+            "MBits": 10,
+            "ReservedPorts": [{
+              "Label": "app",
+              "Value": 8888
+            }]
           }]
         },
         "LogConfig": {
