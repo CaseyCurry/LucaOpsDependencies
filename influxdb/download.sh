@@ -1,4 +1,4 @@
-cd ~/src/Luca/ops/environment/dependencies/influxdb
+cd ~/src/Luca/ops/dependencies/influxdb
 
 # download
 curl -LO https://dl.influxdata.com/influxdb/releases/influxdb-1.3.5-static_linux_amd64.tar.gz
