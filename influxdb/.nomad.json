@@ -1,0 +1,73 @@
+{
+  "Job": {
+    "ID": "influxdb",
+    "Name": "influxdb",
+    "Type": "service",
+    "Datacenters": [
+      "dev-lab"
+    ],
+    "Constraints": [{
+      "LTarget": "${meta.rkt}",
+      "RTarget": "1",
+      "Operand": "="
+    }],
+    "TaskGroups": [{
+      "Name": "service",
+      "Count": 1,
+      "Tasks": [{
+        "Name": "api",
+        "Driver": "rkt",
+        "Config": {
+          "image": "http://server.nomad.devlab/influxdb.1.3.5.aci",
+          "insecure_options": [
+            "image"
+          ],
+          "port_map": [{
+            "db": "http"
+          }],
+          "volumes": [
+            "/var/lib/influxdb:/var/lib/influxdb"
+          ]
+        },
+        "Services": [{
+          "Id": "",
+          "Name": "influxdb",
+          "Tags": [
+            "dependency"
+          ],
+          "PortLabel": "db",
+          "Checks": [{
+            "Name": "InfluxDB Healthy",
+            "Type": "http",
+            "Path": "/",
+            "Interval": 10000000000,
+            "Timeout": 2000000000
+          }]
+        }],
+        "Resources": {
+          "CPU": 500,
+          "MemoryMB": 256,
+          "Networks": [{
+            "MBits": 10,
+            "DynamicPorts": [{
+              "Label": "db"
+            }]
+          }]
+        },
+        "LogConfig": {
+          "MaxFiles": 5,
+          "MaxFileSizeMB": 10
+        }
+      }],
+      "RestartPolicy": {
+        "Interval": 300000000000,
+        "Attempts": 10,
+        "Delay": 25000000000,
+        "Mode": "delay"
+      },
+      "EphemeralDisk": {
+        "SizeMB": 250
+      }
+    }]
+  }
+}
