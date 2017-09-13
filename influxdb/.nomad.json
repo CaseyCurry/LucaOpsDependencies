@@ -24,10 +24,7 @@
           ],
           "port_map": [{
             "db": "http"
-          }],
-          "volumes": [
-            "/var/lib/influxdb:/var/lib/influxdb"
-          ]
+          }]
         },
         "Services": [{
           "Id": "",
