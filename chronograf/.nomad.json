@@ -15,6 +15,25 @@
       "Name": "service",
       "Count": 1,
       "Tasks": [{
+        "Name": "reserve port 8888",
+        "Driver": "exec",
+        "Config": {
+          "command": "/usr/bin/sleep",
+          "args": [
+            "infinity"
+          ]
+        },
+        "Resources": {
+          "CPU": 20,
+          "Networks": [{
+            "MBits": 10,
+            "ReservedPorts": [{
+              "Label": "app",
+              "Value": 8888
+            }]
+          }]
+        }
+      }, {
         "Name": "api",
         "Driver": "rkt",
         "Config": {
