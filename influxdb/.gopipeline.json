@@ -61,15 +61,6 @@
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
-        "command": "ls",
-        "arguments": [
-          "./influxdb-1.3.5-1"
-        ],
-        "working_directory": null
-      }, {
-        "type": "exec",
-        "run_if": "passed",
-        "on_cancel": null,
         "command": "sed",
         "arguments": [
           "-i",
