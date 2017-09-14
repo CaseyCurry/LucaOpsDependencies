@@ -70,9 +70,11 @@
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
-        "command": "bash",
+        "command": "sed",
         "arguments": [
-          "sed -i \"s/# write-tracing = false/write-tracing = true/\" ./influxdb-1.3.5-1/influxdb.conf"
+          "-i",
+          "s/# write-tracing = false/write-tracing = true/",
+          "./influxdb-1.3.5-1/influxdb.conf"
         ],
         "working_directory": null
       }, {
