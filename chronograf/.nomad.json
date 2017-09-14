@@ -29,7 +29,15 @@
           "Name": "chronograf",
           "Tags": [
             "dependency"
-          ]
+          ],
+          "PortLabel": "app",
+          "Checks": [{
+            "Name": "Chronograf Healthy",
+            "Type": "http",
+            "Path": "/",
+            "Interval": 10000000000,
+            "Timeout": 2000000000
+          }]
         }],
         "Resources": {
           "CPU": 500,
