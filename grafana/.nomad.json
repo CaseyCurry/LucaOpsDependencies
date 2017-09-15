@@ -49,7 +49,7 @@
           "MemoryMB": 512,
           "Networks": [{
             "MBits": 10,
-            "DynamicPorts": [{
+            "StaticPorts": [{
               "Label": "app",
               "Value": 3000
             }]
