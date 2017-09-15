@@ -64,7 +64,7 @@
         "command": "bash",
         "arguments": [
           "-c",
-          "sed -i \":a;N;$!ba;s/# enable anonymous access\nenabled = false/# enable anonymous access\nenabled = true/\" ./grafana-4.5.0/conf/defaults.ini"
+          "sed -i ':a;N;$!ba;s/# enable anonymous access\nenabled = false/# enable anonymous access\nenabled = true/' ./grafana-4.5.0/conf/defaults.ini"
         ],
         "working_directory": null
       }, {
