@@ -61,16 +61,6 @@
         "type": "exec",
         "run_if": "passed",
         "on_cancel": null,
-        "command": "bash",
-        "arguments": [
-          "-c",
-          "sed -i ':a;N;$!ba;s/# enable anonymous access\\nenabled = false/# enable anonymous access\\nenabled = true/' ./grafana-4.5.0/conf/defaults.ini"
-        ],
-        "working_directory": null
-      }, {
-        "type": "exec",
-        "run_if": "passed",
-        "on_cancel": null,
         "command": "sed",
         "arguments": [
           "-i",
