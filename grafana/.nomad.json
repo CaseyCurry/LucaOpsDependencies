@@ -61,7 +61,7 @@
         }
       }],
       "RestartPolicy": {
-        "Interval": 150000000000,
+        "Interval": 300000000000,
         "Attempts": 10,
         "Delay": 25000000000,
         "Mode": "delay"
