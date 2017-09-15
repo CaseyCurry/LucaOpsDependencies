@@ -11,7 +11,7 @@ sudo cp /usr/lib64/libc.so.6 ./libc.so.6 && sudo chown cj:cj ./libc.so.6
 acbuild begin
 acbuild set-name grafana
 acbuild label add version 4.5.0
-acbuild copy-to-dir ./grafana-4.5.0/bin ./grafana-4.5.0/conf ./grafana-4.5.0/data ./grafana-4.5.0/public ./grafana-4.5.0/scripts ./grafana-4.5.0/vendor ./grafana-4.5.0/VERSION /
+acbuild copy-to-dir ./grafana-4.5.0/bin ./grafana-4.5.0/conf ./grafana-4.5.0/public ./grafana-4.5.0/scripts ./grafana-4.5.0/vendor ./grafana-4.5.0/VERSION /
 acbuild copy ./ld-linux-x86-64.so.2 /lib64/ld-linux-x86-64.so.2
 acbuild copy ./libdl.so.2 /lib64/libdl.so.2
 acbuild copy ./libpthread.so.0 /lib64/libpthread.so.0

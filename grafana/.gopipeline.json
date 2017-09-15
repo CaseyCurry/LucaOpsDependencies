@@ -135,7 +135,6 @@
           "copy-to-dir",
           "./grafana-4.5.0/bin",
           "./grafana-4.5.0/conf",
-          "./grafana-4.5.0/data",
           "./grafana-4.5.0/public",
           "./grafana-4.5.0/scripts",
           "./grafana-4.5.0/vendor",
