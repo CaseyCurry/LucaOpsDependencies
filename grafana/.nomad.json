@@ -46,10 +46,10 @@
         }],
         "Resources": {
           "CPU": 500,
-          "MemoryMB": 512,
+          "MemoryMB": 256,
           "Networks": [{
             "MBits": 10,
-            "StaticPorts": [{
+            "ReservedPorts": [{
               "Label": "app",
               "Value": 3000
             }]
@@ -67,7 +67,7 @@
         "Mode": "delay"
       },
       "EphemeralDisk": {
-        "SizeMB": 512
+        "SizeMB": 250
       }
     }]
   }
