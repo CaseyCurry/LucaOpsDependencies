@@ -64,7 +64,7 @@
         "command": "bash",
         "arguments": [
           "-c",
-          "cp /usr/lib64/ld-linux-x86-64.so.2 ./ld-linux-x86-64.so.2 && sudo chown cj:cj ./ld-linux-x86-64.so.2"
+          "cp /usr/lib64/ld-linux-x86-64.so.2 ./ld-linux-x86-64.so.2 && chown go:go ./ld-linux-x86-64.so.2"
         ],
         "working_directory": null
       }, {
@@ -74,7 +74,7 @@
         "command": "bash",
         "arguments": [
           "-c",
-          "cp /usr/lib64/libdl.so.2 ./libdl.so.2 && sudo chown cj:cj ./libdl.so.2"
+          "cp /usr/lib64/libdl.so.2 ./libdl.so.2 && chown go:go ./libdl.so.2"
         ],
         "working_directory": null
       }, {
@@ -84,7 +84,7 @@
         "command": "bash",
         "arguments": [
           "-c",
-          "cp /usr/lib64/libpthread.so.0 ./libpthread.so.0 && sudo chown cj:cj ./libpthread.so.0"
+          "cp /usr/lib64/libpthread.so.0 ./libpthread.so.0 && chown go:go ./libpthread.so.0"
         ],
         "working_directory": null
       }, {
@@ -94,7 +94,7 @@
         "command": "bash",
         "arguments": [
           "-c",
-          "cp /usr/lib64/libc.so.6 ./libc.so.6 && sudo chown cj:cj ./libc.so.6"
+          "cp /usr/lib64/libc.so.6 ./libc.so.6 && chown go:go ./libc.so.6"
         ],
         "working_directory": null
       }, {
