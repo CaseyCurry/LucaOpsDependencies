@@ -27,7 +27,7 @@
             "image"
           ],
           "net": ["host"],
-          "dns_servers": ["host"]
+          "dns_servers": ["192.168.56.109"]
         },
         "Services": [{
           "Id": "",
