@@ -46,10 +46,10 @@
         }],
         "Resources": {
           "CPU": 500,
-          "MemoryMB": 256,
+          "MemoryMB": 512,
           "Networks": [{
             "MBits": 10,
-            "ReservedPorts": [{
+            "DyPorts": [{
               "Label": "app",
               "Value": 3000
             }]
@@ -67,7 +67,7 @@
         "Mode": "delay"
       },
       "EphemeralDisk": {
-        "SizeMB": 250
+        "SizeMB": 512
       }
     }]
   }
