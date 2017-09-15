@@ -46,7 +46,7 @@
         }],
         "Resources": {
           "CPU": 500,
-          "MemoryMB": 256,
+          "MemoryMB": 512,
           "Networks": [{
             "MBits": 10,
             "ReservedPorts": [{
@@ -61,13 +61,13 @@
         }
       }],
       "RestartPolicy": {
-        "Interval": 300000000000,
+        "Interval": 150000000000,
         "Attempts": 10,
         "Delay": 25000000000,
         "Mode": "delay"
       },
       "EphemeralDisk": {
-        "SizeMB": 250
+        "SizeMB": 512
       }
     }]
   }
