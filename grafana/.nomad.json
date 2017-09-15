@@ -1,0 +1,74 @@
+{
+  "Job": {
+    "ID": "grafana",
+    "Name": "grafana",
+    "Type": "service",
+    "Datacenters": [
+      "dev-lab"
+    ],
+    "Constraints": [{
+      "LTarget": "${meta.rkt}",
+      "RTarget": "1",
+      "Operand": "="
+    }, {
+      "LTarget": "${meta.grafana}",
+      "RTarget": "1",
+      "Operand": "="
+    }],
+    "TaskGroups": [{
+      "Name": "service",
+      "Count": 1,
+      "Tasks": [{
+        "Name": "api",
+        "Driver": "rkt",
+        "Config": {
+          "image": "http://server.nomad.devlab/grafana.{{version}}.aci",
+          "insecure_options": [
+            "image"
+          ],
+          "net": ["host"],
+          "dns": ["host"]
+        },
+        "Services": [{
+          "Id": "",
+          "Name": "grafana",
+          "Tags": [
+            "dependency"
+          ],
+          "PortLabel": "app",
+          "Checks": [{
+            "Name": "Grafana Healthy",
+            "Type": "http",
+            "Path": "/",
+            "Interval": 10000000000,
+            "Timeout": 2000000000
+          }]
+        }],
+        "Resources": {
+          "CPU": 500,
+          "MemoryMB": 256,
+          "Networks": [{
+            "MBits": 10,
+            "ReservedPorts": [{
+              "Label": "app",
+              "Value": 3000
+            }]
+          }]
+        },
+        "LogConfig": {
+          "MaxFiles": 5,
+          "MaxFileSizeMB": 10
+        }
+      }],
+      "RestartPolicy": {
+        "Interval": 300000000000,
+        "Attempts": 10,
+        "Delay": 25000000000,
+        "Mode": "delay"
+      },
+      "EphemeralDisk": {
+        "SizeMB": 250
+      }
+    }]
+  }
+}

@@ -1,0 +1,263 @@
+{
+  "group": "Dependency",
+  "name": "Grafana",
+  "label_template": "${COUNT}",
+  "enable_pipeline_locking": false,
+  "tracking_tool": null,
+  "timer": null,
+  "environment_variables": [],
+  "materials": [{
+    "url": "https://github.com/caseycurry/LucaOpsDependencies",
+    "branch": "master",
+    "filter": null,
+    "destination": null,
+    "auto_update": true,
+    "name": null,
+    "type": "git"
+  }],
+  "stages": [{
+    "name": "Containerize",
+    "fetch_materials": true,
+    "never_cleanup_artifacts": false,
+    "clean_working_directory": true,
+    "environment_variables": [{
+      "name": "PATH",
+      "value": "/usr/local/bin:/usr/bin:/bin"
+    }],
+    "jobs": [{
+      "name": "Containerize",
+      "environment_variables": [],
+      "tabs": [],
+      "resources": [],
+      "artifacts": [{
+        "source": "container",
+        "destination": null,
+        "type": "build"
+      }],
+      "properties": [],
+      "run_instance_count": null,
+      "timeout": 0,
+      "tasks": [{
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "curl",
+        "arguments": [
+          "-LO",
+          "https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana-4.5.0.linux-x64.tar.gz"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "tar",
+        "arguments": [
+          "xfz",
+          "grafana-4.5.0.linux-x64.tar.gz"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "bash",
+        "arguments": [
+          "-c",
+          "cp /usr/lib64/ld-linux-x86-64.so.2 ./ld-linux-x86-64.so.2 && sudo chown cj:cj ./ld-linux-x86-64.so.2"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "bash",
+        "arguments": [
+          "-c",
+          "cp /usr/lib64/libdl.so.2 ./libdl.so.2 && sudo chown cj:cj ./libdl.so.2"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "bash",
+        "arguments": [
+          "-c",
+          "cp /usr/lib64/libpthread.so.0 ./libpthread.so.0 && sudo chown cj:cj ./libpthread.so.0"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "bash",
+        "arguments": [
+          "-c",
+          "cp /usr/lib64/libc.so.6 ./libc.so.6 && sudo chown cj:cj ./libc.so.6"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "acbuild",
+        "arguments": [
+          "begin"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "acbuild",
+        "arguments": [
+          "set-name",
+          "grafana"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "bash",
+        "arguments": [
+          "-c",
+          "acbuild label add version $GO_REVISION"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "acbuild",
+        "arguments": [
+          "copy-to-dir",
+          "./grafana-4.5.0/bin",
+          "./grafana-4.5.0/conf",
+          "./grafana-4.5.0/data",
+          "./grafana-4.5.0/public",
+          "./grafana-4.5.0/scripts",
+          "./grafana-4.5.0/vendor",
+          "./grafana-4.5.0/VERSION",
+          "/"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "acbuild",
+        "arguments": [
+          "copy-to-dir",
+          "./ld-linux-x86-64.so.2",
+          "./libdl.so.2",
+          "./libpthread.so.0",
+          "./libc.so.6",
+          "/lib64"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "acbuild",
+        "arguments": [
+          "set-exec",
+          "--",
+          "/bin/grafana-server",
+          "web"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "bash",
+        "arguments": [
+          "-c",
+          "mkdir ./container && acbuild write ./container/grafana.$GO_REVISION.aci"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "acbuild",
+        "arguments": [
+          "end"
+        ],
+        "working_directory": null
+      }]
+    }]
+  }, {
+    "name": "DeployToDev",
+    "fetch_materials": true,
+    "never_cleanup_artifacts": false,
+    "clean_working_directory": true,
+    "environment_variables": [{
+      "name": "PATH",
+      "value": "/usr/local/bin:/usr/bin:/bin"
+    }],
+    "jobs": [{
+      "name": "SubmitNomadJob",
+      "environment_variables": [],
+      "tabs": [],
+      "resources": [],
+      "artifacts": [],
+      "properties": [],
+      "run_instance_count": null,
+      "timeout": 0,
+      "tasks": [{
+        "type": "fetch",
+        "run_if": "passed",
+        "pipeline": "Grafana",
+        "stage": "Containerize",
+        "job": "Containerize",
+        "is_source_a_file": false,
+        "source": "./container",
+        "destination": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "bash",
+        "arguments": [
+          "-c",
+          "ssh -o StrictHostKeyChecking=no -i /var/go/.ssh/id_rsa cj@server.nomad.devlab \"cd /www/containers && ls -t | grep -e 'grafana' | tail -n +4 | xargs -r rm\""
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "bash",
+        "arguments": [
+          "-c",
+          "scp -o StrictHostKeyChecking=no -i /var/go/.ssh/id_rsa ./container/grafana.$GO_REVISION.aci cj@server.nomad.devlab:/www/containers"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "bash",
+        "arguments": [
+          "-c",
+          "sed -i \"s/{{version}}/$GO_REVISION/\" ./.nomad.json"
+        ],
+        "working_directory": "./grafana"
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "bash",
+        "arguments": [
+          "-c",
+          "if [ $(curl -XPOST http://server.nomad.devlab:4646/v1/jobs -H 'Content-Type: application/json' --data-binary @./.nomad.json --write-out '\nSTATUS CODE: %{http_code}' | grep 'STATUS CODE: ' | sed 's/STATUS CODE: //') -ne 200 ]; then exit 1; fi"
+        ],
+        "working_directory": "./grafana"
+      }]
+    }]
+  }]
+}
