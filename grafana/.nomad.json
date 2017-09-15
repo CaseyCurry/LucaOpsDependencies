@@ -39,7 +39,7 @@
           "Checks": [{
             "Name": "Grafana Healthy",
             "Type": "http",
-            "Path": "/",
+            "Path": "/grafana/login",
             "Interval": 10000000000,
             "Timeout": 2000000000
           }]
