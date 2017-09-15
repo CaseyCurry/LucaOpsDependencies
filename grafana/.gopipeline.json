@@ -253,7 +253,7 @@
         "command": "bash",
         "arguments": [
           "-c",
-          "if [ $(curl -v -XPOST http://server.nomad.devlab:4646/v1/jobs -H 'Content-Type: application/json' --data-binary @./.nomad.json --write-out '\nSTATUS CODE: %{http_code}' | grep 'STATUS CODE: ' | sed 's/STATUS CODE: //') -ne 200 ]; then exit 1; fi"
+          "if [ $(curl -XPOST http://server.nomad.devlab:4646/v1/jobs -H 'Content-Type: application/json' --data-binary @./.nomad.json --write-out '\nSTATUS CODE: %{http_code}' | grep 'STATUS CODE: ' | sed 's/STATUS CODE: //') -ne 200 ]; then exit 1; fi"
         ],
         "working_directory": "./grafana"
       }]
