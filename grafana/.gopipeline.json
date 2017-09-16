@@ -11,7 +11,7 @@
     "branch": "master",
     "filter": {
       "whitelist": [
-        "grafana"
+        "grafana/**/*"
       ]
     },
     "destination": null,
