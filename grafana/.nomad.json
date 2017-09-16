@@ -10,12 +10,16 @@
       "LTarget": "${meta.rkt}",
       "RTarget": "1",
       "Operand": "="
+    }, {
+      "LTarget": "${meta.grafana}",
+      "RTarget": "1",
+      "Operand": "="
     }],
     "TaskGroups": [{
       "Name": "service",
       "Count": 1,
       "Tasks": [{
-        "Name": "app",
+        "Name": "api",
         "Driver": "rkt",
         "Config": {
           "image": "http://server.nomad.devlab/grafana.{{version}}.aci",
@@ -42,7 +46,7 @@
         }],
         "Resources": {
           "CPU": 500,
-          "MemoryMB": 512,
+          "MemoryMB": 256,
           "Networks": [{
             "MBits": 10,
             "ReservedPorts": [{
@@ -63,7 +67,7 @@
         "Mode": "delay"
       },
       "EphemeralDisk": {
-        "SizeMB": 512
+        "SizeMB": 250
       }
     }]
   }
