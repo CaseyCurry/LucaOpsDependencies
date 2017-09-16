@@ -22,10 +22,10 @@
         "Name": "volume",
         "Driver": "raw_exec",
         "Config": {
-          "command": "/usr/bin/mkdir",
+          "command": "/usr/bin/bash",
           "args": [
-            "-p",
-            "/var/lib/grafana"
+            "-c",
+            "mkdir -p /var/lib/grafana/data"
           ]
         },
         "Resources": {
@@ -42,7 +42,7 @@
           "net": ["host"],
           "dns_servers": ["host"],
           "volumes": [
-            "/var/lib/grafana:/bin/data"
+            "/var/lib/grafana/data:/var/lib/grafana/data"
           ]
         },
         "Services": [{

@@ -64,6 +64,17 @@
         "command": "sed",
         "arguments": [
           "-i",
+          "s*data = data*data = /var/lib/grafana/data*",
+          "./grafana-4.5.0/conf/defaults.ini"
+        ],
+        "working_directory": null
+      }, {
+        "type": "exec",
+        "run_if": "passed",
+        "on_cancel": null,
+        "command": "sed",
+        "arguments": [
+          "-i",
           "s*(http_port)s/*(http_port)s/grafana/*",
           "./grafana-4.5.0/conf/defaults.ini"
         ],
