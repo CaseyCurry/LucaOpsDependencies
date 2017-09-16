@@ -11,11 +11,11 @@
     "branch": "master",
     "filter": {
       "whitelist": [
-        "influxdb"
+        "influxdb/**/*"
       ]
     },
     "destination": null,
-    "auto_update": true,
+    "auto_update": false,
     "name": null,
     "type": "git"
   }],
