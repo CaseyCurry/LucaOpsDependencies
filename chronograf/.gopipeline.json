@@ -15,7 +15,7 @@
       ]
     },
     "destination": null,
-    "auto_update": false,
+    "auto_update": true,
     "name": null,
     "type": "git"
   }],
