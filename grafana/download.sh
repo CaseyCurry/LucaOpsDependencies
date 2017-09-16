@@ -2,7 +2,6 @@
 curl -LO https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana-4.5.0.linux-x64.tar.gz
 tar -zxf grafana-4.5.0.linux-x64.tar.gz
 rm grafana-4.5.0.linux-x64.tar.gz
-sed -i ':a;N;$!ba;s/# enable anonymous access\nenabled = false/# enable anonymous access\nenabled = true/' ./grafana-4.5.0/conf/defaults.ini
 sed -i 's*(http_port)s/*(http_port)s/grafana/*' ./grafana-4.5.0/conf/defaults.ini
 
 # containerize

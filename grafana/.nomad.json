@@ -16,6 +16,19 @@
       "Operand": "="
     }],
     "TaskGroups": [{
+      "Name": "vooume",
+      "Driver": "raw_exec",
+      "Config": {
+        "command": "/usr/bin/mkdir",
+        "args": [
+          "-p",
+          "/var/lib/grafana"
+        ]
+      },
+      "Resources": {
+        "CPU": 20
+      }
+    }, {
       "Name": "service",
       "Count": 1,
       "Tasks": [{
@@ -27,7 +40,10 @@
             "image"
           ],
           "net": ["host"],
-          "dns_servers": ["host"]
+          "dns_servers": ["host"],
+          "volumes": [
+            "/var/lib/grafana:/bin/data"
+          ]
         },
         "Services": [{
           "Id": "",
