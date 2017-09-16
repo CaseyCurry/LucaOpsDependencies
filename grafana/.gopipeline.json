@@ -9,7 +9,11 @@
   "materials": [{
     "url": "https://github.com/caseycurry/LucaOpsDependencies",
     "branch": "master",
-    "filter": null,
+    "filter": {
+      "whitelist": [
+        "grafana"
+      ]
+    },
     "destination": null,
     "auto_update": true,
     "name": null,
