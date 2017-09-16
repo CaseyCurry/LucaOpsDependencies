@@ -19,7 +19,7 @@
       "Name": "service",
       "Count": 1,
       "Tasks": [{
-        "Name": "api",
+        "Name": "app",
         "Driver": "rkt",
         "Config": {
           "image": "http://server.nomad.devlab/grafana.{{version}}.aci",
@@ -27,7 +27,7 @@
             "image"
           ],
           "net": ["host"],
-          "dns_servers": ["192.168.56.109"]
+          "dns_servers": ["host"]
         },
         "Services": [{
           "Id": "",
