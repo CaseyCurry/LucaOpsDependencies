@@ -83,7 +83,6 @@
         "Mode": "delay"
       },
       "EphemeralDisk": {
-        "Sticky": true,
         "SizeMB": 256
       }
     }]
