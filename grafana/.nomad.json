@@ -19,7 +19,7 @@
       "Name": "service",
       "Count": 1,
       "Tasks": [{
-        "Name": "api",
+        "Name": "app",
         "Driver": "rkt",
         "Config": {
           "image": "http://server.nomad.devlab/grafana.{{version}}.aci",
@@ -39,7 +39,7 @@
           "Checks": [{
             "Name": "Grafana Healthy",
             "Type": "http",
-            "Path": "/",
+            "Path": "/grafana/login",
             "Interval": 10000000000,
             "Timeout": 2000000000
           }]
@@ -67,7 +67,7 @@
         "Mode": "delay"
       },
       "EphemeralDisk": {
-        "SizeMB": 250
+        "SizeMB": 256
       }
     }]
   }
