@@ -10,10 +10,6 @@
       "LTarget": "${meta.rkt}",
       "RTarget": "1",
       "Operand": "="
-    }, {
-      "LTarget": "${meta.grafana}",
-      "RTarget": "1",
-      "Operand": "="
     }],
     "TaskGroups": [{
       "Name": "service",
