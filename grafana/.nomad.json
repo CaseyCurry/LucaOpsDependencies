@@ -16,22 +16,22 @@
       "Operand": "="
     }],
     "TaskGroups": [{
-      "Name": "vooume",
-      "Driver": "raw_exec",
-      "Config": {
-        "command": "/usr/bin/mkdir",
-        "args": [
-          "-p",
-          "/var/lib/grafana"
-        ]
-      },
-      "Resources": {
-        "CPU": 20
-      }
-    }, {
       "Name": "service",
       "Count": 1,
       "Tasks": [{
+        "Name": "volume",
+        "Driver": "raw_exec",
+        "Config": {
+          "command": "/usr/bin/mkdir",
+          "args": [
+            "-p",
+            "/var/lib/grafana"
+          ]
+        },
+        "Resources": {
+          "CPU": 20
+        }
+      }, {
         "Name": "app",
         "Driver": "rkt",
         "Config": {
